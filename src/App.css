@@ -3,7 +3,8 @@
 }
 
 body {
-  margin: 5vh 5vw;
+  font-family: roboto;
+
 }
 
 .flex {
@@ -14,47 +15,106 @@ body {
   flex-direction: column;
 }
 
+.text {
+  text-align: center;
+}
+
 .between {
   justify-content: space-between;
 }
 
 .App {
-  text-align: center;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
 }
 
-.form {
-  width: 250px;
-  display: flex;
-  flex-direction: column;
 
+h4, h5 {
+  color:grey;
 }
 
 .numbers {
-  font-family: roboto;
   color: grey;
 }
 
+
+.form {
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #EFF1F5;
+  border-radius: 15px;
+  
+}
+
+.form h1, h2, input {
+  color:#090A5C;
+}
+
+.form input {
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  float: left;
+}
+
+.form input:focus {
+  outline: none;
+}
+
+.form ::placeholder {
+  color: #090A5C;
+}
+
+.formAmount h5, .formMonths h5, .formBottom h5, .formBottom h2 {
+text-align: start;
+margin: 0 0 5px 0;
+}
+
+.form button {
+  width: 300px;
+  margin-top: 5px;
+}
+
+
+.formMonths, .formAmount, .formHeader {
+  background-color: white;
+  width: 300px;
+  margin: 20px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.formBottom {
+  background-color: white;
+  width: inherit;
+  padding: 30px;
+}
+
+.formHeader {
+  margin: 0;
+}
+
+.message h4 {
+  color: #E4252D;
+}
+
+.noMessage {
+  visibility: hidden;
+}
 
 .MuiSlider-rail {
   color: lightgrey;
 }
 
 .MuiSlider-track, .MuiSlider-thumb {
-  color: #007B83;
+  color: #017E86;
 }
 
 
-input[type="number"] {
-  border: none;
-  font-size: 16px;
-
-}
-
-input[type="number"]:focus {
-  outline: none;
-  color: purple;
-
-}
 
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
