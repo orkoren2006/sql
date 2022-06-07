@@ -12,7 +12,7 @@ export default function ApplicationForm() {
   const maxAmount = (20000).toLocaleString('en-US', { style: 'currency', currency: 'USD' })
   const monthlyInterest = 0.02 / 12
 
-  const [application, setApplication] = useState({ amount: 5000, months: 24 })
+  const [application, setApplication] = useState({ amount: 5000, months: 24, monthly: 0 })
   const [monthly, setMonthly] = useState(0)
   const [message, setMessage] = useState(false)
   const [modal, setModal] = useState(false)
@@ -21,6 +21,10 @@ export default function ApplicationForm() {
   useEffect(() => {
     calculateInstallment()
   }, [application])
+
+  useEffect(() => {
+    updateLoan()
+  },[monthly])
 
 
   const handleSliderAmount = e => {
@@ -71,15 +75,35 @@ export default function ApplicationForm() {
     setMessage(false)
   }
 
+  const updateLoan = () => {
+    setApplication({ ...application, monthly: monthly })
+  }
+
   const apply = () => {
     if (application.amount > 20000 || application.amount < 1000 || application.months < 6 || application.months > 64) {
       setModal(true)
       return
     }
+
+    submitApplication()
   }
 
   const closeModal = () => {
     setModal(false)
+  }
+
+  const submitApplication = async () => {
+    const newData = await fetch('/api', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        ...application
+      })
+    })
+    .then(res => res.json())
   }
 
   return (
